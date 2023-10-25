@@ -11,13 +11,13 @@ export const DelegateIcon = () => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <title>Delegate</title>
-      <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Assets" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Delegate" transform="translate(1.5, 7.5)">
           <g
             id="Icons-/-Arrow-/-Direction-Right"
             opacity="0.64"
             stroke="#FFFFFF"
-            stroke-linejoin="round"
+            strokeLinejoin="round"
           >
             <line x1="1.54626312e-13" y1="4.5" x2="9" y2="4.5" id="Path-3-Copy"></line>
             <polyline id="Path-3" points="4.5 0 9 4.5 4.5 9"></polyline>

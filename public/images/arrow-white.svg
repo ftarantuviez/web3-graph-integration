@@ -14,10 +14,10 @@
             </feMerge>
         </filter>
     </defs>
-    <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="arrow" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g>
             <use fill="none" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"/>
-            <use fill="#FFF" fill-rule="evenodd" xlink:href="#path-1"/>
+            <use fill="#FFF" fillRule="evenodd" xlink:href="#path-1"/>
         </g>
     </g>
 </svg>

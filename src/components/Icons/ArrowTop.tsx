@@ -14,10 +14,10 @@ export const ArrowTop = () => {
       <g
         id="Assets"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
-        stroke-linejoin="round"
+        fillRule="evenodd"
+        strokeLinejoin="round"
       >
         <g id="Direction-Up" transform="translate(3, 2)" stroke="#FFFFFF">
           <g

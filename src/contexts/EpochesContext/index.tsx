@@ -1,21 +1,45 @@
 'use client'
-import { createContext, useContext } from 'react'
+import { Dispatch, SetStateAction, createContext, useContext, useState } from 'react'
 import useEpochesStore from './useEpochesStore'
+import { FilterValues } from '../../types/filters'
 
-const EpochesContext = createContext({})
+type EpochesContextValues = {
+  filters: FilterValues
+  setFilters: Dispatch<SetStateAction<FilterValues>>
+}
+
+const EpochesContext = createContext<EpochesContextValues>({
+  filters: {
+    first: 3,
+    orderBy: 'startBlock',
+    orderDirection: 'asc',
+  },
+  setFilters: () => {},
+})
 
 const EpochesConsumer = EpochesContext.Consumer
 
-const useEpoches = () => useContext(EpochesContext)
+const useEpoches = () => useContext<EpochesContextValues>(EpochesContext)
 
 type EpochesProviderProps = {
   children: React.ReactNode
 }
 
 const EpochesProvider = ({ children }: EpochesProviderProps) => {
-  useEpochesStore()
+  const [filters, setFilters] = useState<FilterValues>({
+    first: 3,
+    orderBy: 'startBlock',
+    orderDirection: 'asc',
+  })
 
-  return <EpochesContext.Provider value={{}}>{children}</EpochesContext.Provider>
+  useEpochesStore(filters)
+
+  const values = {
+    filters,
+    setFilters,
+  }
+
+  return <EpochesContext.Provider value={values}>{children}</EpochesContext.Provider>
 }
 
 export default EpochesContext

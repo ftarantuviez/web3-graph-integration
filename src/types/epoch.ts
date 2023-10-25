@@ -5,3 +5,5 @@ export interface Epoch {
   totalQueryFees: string
   totalRewards: string
 }
+
+export type EpochColumns = keyof Epoch

@@ -1,6 +1,7 @@
 'use client'
 import ContextProviderManager from '../contexts/ContextProviderManager'
-import './globals.scss'
+
+import '../styles/globals.scss'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

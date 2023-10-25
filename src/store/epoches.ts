@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { AppDispatch, RootState } from './index'
-import { Epoch } from '../types/epoch'
+import { Epoch, EpochColumns } from '../types/epoch'
 import { getEpoches } from '../services'
+import { FilterValues, TSortingOrder } from '../types/filters'
 
 export interface EpochesState {
   isLoading: boolean
@@ -27,12 +28,19 @@ export const epochesSlice = createSlice({
   },
 })
 
-export const getEpochesInfo = () => async (dispatch: AppDispatch) => {
-  try {
-    const epoches = await getEpoches()
-    await dispatch(setEpoches({ epoches }))
-  } catch (error) {}
-}
+export const getEpochesInfo =
+  ({ first, orderBy, orderDirection }: FilterValues) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      const initialData = {
+        first,
+        orderBy,
+        orderDirection,
+      }
+      const epoches = await getEpoches(initialData)
+      await dispatch(setEpoches({ epoches }))
+    } catch (error) {}
+  }
 
 export const { setEpoches } = epochesSlice.actions
 

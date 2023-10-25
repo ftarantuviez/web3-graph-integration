@@ -14,10 +14,10 @@ export const CloseIcon = () => {
       <g
         id="Assets"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
-        stroke-linejoin="round"
+        fillRule="evenodd"
+        strokeLinejoin="round"
       >
         <g id="close" transform="translate(1.6361, 1.6406)" stroke="#FFFFFF">
           <path
