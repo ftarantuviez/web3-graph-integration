@@ -41,12 +41,18 @@ export default function IndexPage() {
     setSearchQuery(e.target.value)
   }
 
+  const handleResetInput = () => setSearchQuery('')
+
   return (
     <main className={styles.home}>
       <div className={styles.home__header}>
         <h4>Indexers</h4>
         <div className={styles.home__header__divider} />
-        <InputSearch onChange={onSearchChange} value={searchQuery} />
+        <InputSearch
+          onChange={onSearchChange}
+          value={searchQuery}
+          handleResetInput={handleResetInput}
+        />
       </div>
       <div className={styles.home__tableCont}>
         <Table
@@ -54,6 +60,7 @@ export default function IndexPage() {
           handleSortByColumn={handleSortByColumn}
           filters={filters}
         />
+        <p>1 of 1</p>
       </div>
       <Button onClick={handleLoadMore}>Load More</Button>
     </main>

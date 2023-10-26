@@ -3,14 +3,13 @@ import React from 'react'
 export const CloseIcon = () => {
   return (
     <svg
-      width="12px"
-      height="12px"
+      width="10px"
+      height="10px"
       viewBox="0 0 12 12"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <title>close</title>
       <g
         id="Assets"
         stroke="none"

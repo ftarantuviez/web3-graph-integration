@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TableRow from './TableRow/TableRow'
 import TableHeaderColumn from './TableHeaderColumn/TableHeaderColumn'
 import { Epoch } from '../../types/epoch'
@@ -8,6 +8,7 @@ import styles from './Table.module.scss'
 import { TABLE_COLUMNS } from './Table.constants'
 import { FilterValues } from '../../types/filters'
 import { ProfileButton } from '../ProfileButton'
+import { nFormatter, toFullDecimals } from '../../utils/helpers'
 
 type Props = {
   epoches: Epoch[]
@@ -17,6 +18,16 @@ type Props = {
 
 const Table = (props: Props) => {
   const { epoches, handleSortByColumn, filters } = props
+  const [hoveredRow, setHoveredRow] = useState('')
+
+  const handleRowHover = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
+    console.log(e.currentTarget.id)
+    setHoveredRow(e.currentTarget.id)
+  }
+
+  const handleRowHoverLeave = () => {
+    setHoveredRow('')
+  }
 
   return (
     <table className={styles.table}>
@@ -38,26 +49,31 @@ const Table = (props: Props) => {
       </thead>
       <tbody>
         {epoches?.slice(0, 4).map((epoch) => (
-          <TableRow key={epoch.id}>
+          <TableRow
+            key={epoch.id}
+            id={epoch.id}
+            onMouseEnter={handleRowHover}
+            onMouseLeave={handleRowHoverLeave}
+          >
             <TableBodyCell label={epoch.id} isActive={filters.orderBy === 'id'} />
             <TableBodyCell
-              label={epoch.startBlock}
+              label={`#${epoch.startBlock}`}
               isActive={filters.orderBy === 'startBlock'}
             />
             <TableBodyCell
-              label={epoch.endBlock}
+              label={`#${epoch.endBlock}`}
               isActive={filters.orderBy === 'endBlock'}
             />
             <TableBodyCell
-              label={epoch.totalQueryFees}
+              label={toFullDecimals(Number(epoch.totalQueryFees))}
               isActive={filters.orderBy === 'totalQueryFees'}
             />
             <TableBodyCell
-              label={epoch.totalRewards}
+              label={toFullDecimals(Number(epoch.totalRewards))}
               isActive={filters.orderBy === 'totalRewards'}
             />
-            <th>
-              <ProfileButton />
+            <th className={styles.table__profileButton}>
+              {hoveredRow === epoch.id && <ProfileButton />}
             </th>
           </TableRow>
         ))}
