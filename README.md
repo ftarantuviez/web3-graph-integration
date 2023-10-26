@@ -39,10 +39,3 @@ EpochGraph is a revolutionary mobile app designed for users seeking to streamlin
 1. `git clone git@github.com:ftarantuviez/epoch-graph.git`
 2. `npm install` or `yarn`
 3. `npm run dev` or `yarn dev`
-
-### Deploy 🚀
-
----
-
-The app is deployed in Vercel.
-You can find a production version in [this url](https://epoch-graph.vercel.app/).
