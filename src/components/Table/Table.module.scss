@@ -12,4 +12,14 @@
   &__profileButton {
     min-width: 50px;
   }
+
+  &__avatarCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      margin-right: 10px;
+    }
+  }
 }

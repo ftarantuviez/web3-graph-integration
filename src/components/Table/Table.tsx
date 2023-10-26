@@ -7,8 +7,10 @@ import styles from './Table.module.scss'
 
 import { TABLE_COLUMNS } from './Table.constants'
 import { FilterValues } from '../../types/filters'
-import { ProfileButton } from '../ProfileButton'
-import { nFormatter, toFullDecimals } from '../../utils/helpers'
+import { LinkButton } from '../LinkButton'
+import { toFullDecimals } from '../../utils/helpers'
+import { Avatar } from '../Avatar'
+import { DelegateIcon } from '../Icons/DelegateIcon'
 
 type Props = {
   epoches: Epoch[]
@@ -48,14 +50,19 @@ const Table = (props: Props) => {
         </TableRow>
       </thead>
       <tbody>
-        {epoches?.slice(0, 4).map((epoch) => (
+        {epoches?.map((epoch) => (
           <TableRow
             key={epoch.id}
             id={epoch.id}
             onMouseEnter={handleRowHover}
             onMouseLeave={handleRowHoverLeave}
           >
-            <TableBodyCell label={epoch.id} isActive={filters.orderBy === 'id'} />
+            <TableBodyCell isActive={filters.orderBy === 'id'}>
+              <div className={styles.table__avatarCell}>
+                <Avatar id={epoch.id} />
+                {epoch.id}
+              </div>
+            </TableBodyCell>
             <TableBodyCell
               label={`#${epoch.startBlock}`}
               isActive={filters.orderBy === 'startBlock'}
@@ -73,7 +80,11 @@ const Table = (props: Props) => {
               isActive={filters.orderBy === 'totalRewards'}
             />
             <th className={styles.table__profileButton}>
-              {hoveredRow === epoch.id && <ProfileButton />}
+              {hoveredRow === epoch.id && (
+                <LinkButton href={`/delegate/${epoch.id}`}>
+                  <DelegateIcon />
+                </LinkButton>
+              )}
             </th>
           </TableRow>
         ))}

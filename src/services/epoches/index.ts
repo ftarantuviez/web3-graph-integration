@@ -13,19 +13,8 @@ export const getEpoches = async ({
   orderBy: EpochColumns
   orderDirection: TSortingOrder
 }): Promise<Epoch[]> => {
-  /* const query = gql`
-    query GetEpoches($first: Number!, $orderBy: String!, $orderDirection: String!) {
-      epoches(first: $first, orderBy: $orderBy, orderDirection: $orderDirection) {
-        id
-        startBlock
-        endBlock
-        totalQueryFees
-        totalRewards
-      }
-    }
-  ` */
   const query = gql`
-    {
+    query Query_GetEpoches($first: Int!, $orderBy: String!, $orderDirection: String!) {
       epoches(first: $first, orderBy: $orderBy, orderDirection: $orderDirection) {
         id
         startBlock

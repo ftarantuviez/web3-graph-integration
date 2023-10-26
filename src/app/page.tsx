@@ -54,13 +54,17 @@ export default function IndexPage() {
           handleResetInput={handleResetInput}
         />
       </div>
-      <div className={styles.home__tableCont}>
-        <Table
-          epoches={epoches}
-          handleSortByColumn={handleSortByColumn}
-          filters={filters}
-        />
-        <p>1 of 1</p>
+      <div>
+        <div className={styles.home__tableCont}>
+          <Table
+            epoches={epoches}
+            handleSortByColumn={handleSortByColumn}
+            filters={filters}
+          />
+        </div>
+        <p className={styles.home__tableCont__pagination}>
+          {filters.first} of {filters.first}
+        </p>
       </div>
       <Button onClick={handleLoadMore}>Load More</Button>
     </main>
