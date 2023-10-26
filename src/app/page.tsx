@@ -3,22 +3,19 @@
 import { epochesSelector } from '../store/epoches'
 import { useAppSelector } from '../store'
 import Table from '../components/Table/Table'
-import { EpochColumns } from '../types/epoch'
-import { useState } from 'react'
+import { Epoch, EpochColumns } from '../types/epoch'
+import { useEffect, useState } from 'react'
 import { Button } from '../components/Button'
 import { InputSearch } from '../components/InputSearch'
-import { TSortingOrder } from '../types/filters'
+
 import { useEpoches } from '../contexts/EpochesContext'
 import styles from '../styles/pages/Home.module.scss'
 
-export type TSortingValues = {
-  dir: TSortingOrder
-  col: EpochColumns
-}
 export default function IndexPage() {
-  const { epoches } = useAppSelector(epochesSelector)
+  const { epoches, isLoading } = useAppSelector(epochesSelector)
   const { setFilters, filters } = useEpoches()
 
+  const [sortedEpoches, setSortedEpoches] = useState<Epoch[]>(epoches)
   const [searchQuery, setSearchQuery] = useState('')
 
   const handleSortByColumn = (
@@ -38,10 +35,21 @@ export default function IndexPage() {
   }
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value)
+    const val = e.target.value
+    setSearchQuery(val)
+
+    const sortedValues = epoches.filter((epoch) => String(epoch.startBlock).includes(val))
+    setSortedEpoches(sortedValues)
   }
 
-  const handleResetInput = () => setSearchQuery('')
+  const handleResetInput = () => {
+    setSearchQuery('')
+    setSortedEpoches(epoches)
+  }
+
+  useEffect(() => {
+    setSortedEpoches(epoches)
+  }, [epoches])
 
   return (
     <main className={styles.home}>
@@ -57,16 +65,18 @@ export default function IndexPage() {
       <div>
         <div className={styles.home__tableCont}>
           <Table
-            epoches={epoches}
+            epoches={sortedEpoches}
             handleSortByColumn={handleSortByColumn}
             filters={filters}
           />
         </div>
         <p className={styles.home__tableCont__pagination}>
-          {filters.first} of {filters.first}
+          {sortedEpoches.length} of {filters.first}
         </p>
       </div>
-      <Button onClick={handleLoadMore}>Load More</Button>
+      <Button onClick={handleLoadMore} isLoading={isLoading}>
+        Load More
+      </Button>
     </main>
   )
 }

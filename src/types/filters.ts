@@ -6,4 +6,5 @@ export type FilterValues = {
   first: number
   orderBy: EpochColumns
   orderDirection: TSortingOrder
+  query?: string
 }

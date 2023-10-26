@@ -71,14 +71,18 @@ const Table = (props: Props) => {
               label={`#${epoch.endBlock}`}
               isActive={filters.orderBy === 'endBlock'}
             />
-            <TableBodyCell
-              label={toFullDecimals(Number(epoch.totalQueryFees))}
-              isActive={filters.orderBy === 'totalQueryFees'}
-            />
-            <TableBodyCell
-              label={toFullDecimals(Number(epoch.totalRewards))}
-              isActive={filters.orderBy === 'totalRewards'}
-            />
+            <TableBodyCell isActive={filters.orderBy === 'totalQueryFees'}>
+              <div>
+                {toFullDecimals(Number(epoch.totalQueryFees))}
+                <span className={styles.table__gtr}>GTR</span>
+              </div>
+            </TableBodyCell>
+            <TableBodyCell isActive={filters.orderBy === 'totalRewards'}>
+              <div>
+                {toFullDecimals(Number(epoch.totalRewards))}
+                <span className={styles.table__gtr}>GTR</span>
+              </div>
+            </TableBodyCell>
             <th className={styles.table__profileButton}>
               {hoveredRow === epoch.id && (
                 <LinkButton href={`/delegate/${epoch.id}`}>

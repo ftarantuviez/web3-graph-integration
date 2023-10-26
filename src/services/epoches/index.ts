@@ -8,10 +8,12 @@ export const getEpoches = async ({
   first,
   orderBy,
   orderDirection,
+  querySearch,
 }: {
   first: number
   orderBy: EpochColumns
   orderDirection: TSortingOrder
+  querySearch: number
 }): Promise<Epoch[]> => {
   const query = gql`
     query Query_GetEpoches($first: Int!, $orderBy: String!, $orderDirection: String!) {
@@ -25,7 +27,7 @@ export const getEpoches = async ({
     }
   `
 
-  const variables = {
+  let variables = {
     first,
     orderBy,
     orderDirection,

@@ -37,9 +37,12 @@ export const getEpochesInfo =
         orderBy,
         orderDirection,
       }
+      await dispatch(setEpoches({ isLoading: true }))
       const epoches = await getEpoches(initialData)
-      await dispatch(setEpoches({ epoches }))
-    } catch (error) {}
+      await dispatch(setEpoches({ epoches, isLoading: false }))
+    } catch (error) {
+      await dispatch(setEpoches({ isLoading: false }))
+    }
   }
 
 export const { setEpoches } = epochesSlice.actions

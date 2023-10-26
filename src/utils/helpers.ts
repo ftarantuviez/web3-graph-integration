@@ -23,5 +23,5 @@ export const nFormatter = (value: number | string) => {
 }
 
 export const toFullDecimals = (val: number) => {
-  return Math.round(val / 1e18)
+  return Math.round(val / 1e18) || 0
 }
