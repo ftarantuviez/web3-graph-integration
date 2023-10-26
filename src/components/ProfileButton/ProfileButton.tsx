@@ -3,11 +3,14 @@ import React from 'react'
 import styles from './ProfileButton.module.scss'
 import { DelegateIcon } from '../Icons/DelegateIcon'
 
-type Props = {}
+type Props = {
+  address?: string
+}
 
 export const ProfileButton = (props: Props) => {
+  const { address = '' } = props
   return (
-    <Link href={'/'}>
+    <Link href={`/delegate/${address}`}>
       <button className={styles.profileButton}>
         <DelegateIcon />
       </button>

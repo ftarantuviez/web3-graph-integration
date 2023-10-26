@@ -6,5 +6,18 @@
     background: none;
     border: none;
     outline: none;
+    font-size: 10px;
+  }
+
+  input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.48);
+  }
+
+  svg {
+    width: 10px;
+    height: 10px;
+    g {
+      fill: rgba(255, 255, 255, 0.64);
+    }
   }
 }

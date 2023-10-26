@@ -1,0 +1,21 @@
+.profileButton {
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgba(111, 76, 255, 0.16);
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(111, 76, 255, 0.88);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

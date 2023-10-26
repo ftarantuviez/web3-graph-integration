@@ -30,8 +30,10 @@ const TableHeaderColumn = (props: Props) => {
 
   return (
     <th className={className} onClick={onClick} id={id}>
-      {children}
-      {isActive && (isAscending ? <ArrowBottom /> : <ArrowTop />)}
+      <div>
+        {isActive && (isAscending ? <ArrowBottom /> : <ArrowTop />)}
+        {children}
+      </div>
     </th>
   )
 }

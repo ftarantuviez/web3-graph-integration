@@ -1,3 +1,11 @@
 .table {
-  border-collapse: collapse !important;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  tbody {
+    display: table;
+    width: 100%;
+  }
 }

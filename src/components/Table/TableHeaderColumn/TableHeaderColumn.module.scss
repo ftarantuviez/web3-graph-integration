@@ -2,10 +2,22 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   text-transform: uppercase;
   cursor: pointer;
-  font-size: small;
-  width: 20vw;
+  font-size: 10px;
+  letter-spacing: 2px;
+  width: 16.6vw;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.64);
+  padding: 10px;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+  svg {
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+  }
 }
 
 .active {

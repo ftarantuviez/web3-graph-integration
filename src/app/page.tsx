@@ -1,6 +1,5 @@
 'use client'
 
-import background from '../../public/images/background.png'
 import { epochesSelector } from '../store/epoches'
 import { useAppSelector } from '../store'
 import Table from '../components/Table/Table'
@@ -45,15 +44,17 @@ export default function IndexPage() {
   return (
     <main className={styles.home}>
       <div className={styles.home__header}>
-        <h4>Indexer</h4>
+        <h4>Indexers</h4>
         <div className={styles.home__header__divider} />
         <InputSearch onChange={onSearchChange} value={searchQuery} />
       </div>
-      <Table
-        epoches={epoches}
-        handleSortByColumn={handleSortByColumn}
-        filters={filters}
-      />
+      <div className={styles.home__tableCont}>
+        <Table
+          epoches={epoches}
+          handleSortByColumn={handleSortByColumn}
+          filters={filters}
+        />
+      </div>
       <Button onClick={handleLoadMore}>Load More</Button>
     </main>
   )
