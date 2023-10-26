@@ -14,22 +14,26 @@ type Props = {
   id?: EpochColumns
   onClick?: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void
   sortDir?: TSortingOrder
+  className?: string
 }
 
 const cx = classNames.bind(styles)
 
 const TableHeaderColumn = (props: Props) => {
-  const { children, isActive, id, onClick, sortDir } = props
+  const { children, isActive, id, onClick, sortDir, className } = props
 
-  const className = cx({
-    tableHeaderColumn: true,
-    active: isActive,
-  })
+  const classNames = cx(
+    {
+      tableHeaderColumn: true,
+      active: isActive,
+    },
+    className,
+  )
 
   const isAscending = sortDir === 'asc'
 
   return (
-    <th className={className} onClick={onClick} id={id}>
+    <th className={classNames} onClick={onClick} id={id} align="center">
       <div>
         {isActive && (isAscending ? <ArrowBottom /> : <ArrowTop />)}
         {children}

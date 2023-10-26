@@ -23,7 +23,6 @@ const Table = (props: Props) => {
   const [hoveredRow, setHoveredRow] = useState('')
 
   const handleRowHover = (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
-    console.log(e.currentTarget.id)
     setHoveredRow(e.currentTarget.id)
   }
 
@@ -46,7 +45,7 @@ const Table = (props: Props) => {
               {col.label}
             </TableHeaderColumn>
           ))}
-          <TableHeaderColumn />
+          <TableHeaderColumn className={styles.table__buttonCol} />
         </TableRow>
       </thead>
       <tbody>
@@ -85,9 +84,11 @@ const Table = (props: Props) => {
             </TableBodyCell>
             <th className={styles.table__profileButton}>
               {hoveredRow === epoch.id && (
-                <LinkButton href={`/delegate/${epoch.id}`}>
-                  <DelegateIcon />
-                </LinkButton>
+                <div className={styles.table__profileButton__cont}>
+                  <LinkButton href={`/delegate/${epoch.id}`}>
+                    <DelegateIcon />
+                  </LinkButton>
+                </div>
               )}
             </th>
           </TableRow>

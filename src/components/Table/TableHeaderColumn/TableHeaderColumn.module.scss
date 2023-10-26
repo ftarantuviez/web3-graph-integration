@@ -4,14 +4,16 @@
   cursor: pointer;
   font-size: 10px;
   letter-spacing: 2px;
-  width: 16.6vw;
+  width: 200px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.64);
   padding: 10px;
+  text-align: center;
 
   div {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   svg {
     width: 10px;

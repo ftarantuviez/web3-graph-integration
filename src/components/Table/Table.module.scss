@@ -11,12 +11,17 @@
 
   &__profileButton {
     min-width: 50px;
+
+    &__cont {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__avatarCell {
     display: flex;
     align-items: center;
-    justify-content: center;
 
     div {
       margin-right: 10px;
@@ -26,5 +31,9 @@
   &__gtr {
     font-size: 10px;
     margin-left: 4px;
+  }
+
+  &__buttonCol {
+    width: 100px !important;
   }
 }

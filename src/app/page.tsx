@@ -10,6 +10,7 @@ import { InputSearch } from '../components/InputSearch'
 
 import { useEpoches } from '../contexts/EpochesContext'
 import styles from '../styles/pages/Home.module.scss'
+import { ConnectWallet } from '../components/ConnectWallet'
 
 export default function IndexPage() {
   const { epoches, isLoading } = useAppSelector(epochesSelector)
@@ -54,13 +55,16 @@ export default function IndexPage() {
   return (
     <main className={styles.home}>
       <div className={styles.home__header}>
-        <h4>Indexers</h4>
-        <div className={styles.home__header__divider} />
-        <InputSearch
-          onChange={onSearchChange}
-          value={searchQuery}
-          handleResetInput={handleResetInput}
-        />
+        <div className={styles.home__header__left}>
+          <h4>Indexers</h4>
+          <div className={styles.home__header__divider} />
+          <InputSearch
+            onChange={onSearchChange}
+            value={searchQuery}
+            handleResetInput={handleResetInput}
+          />
+        </div>
+        <ConnectWallet />
       </div>
       <div>
         <div className={styles.home__tableCont}>

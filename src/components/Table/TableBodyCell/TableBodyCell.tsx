@@ -7,17 +7,21 @@ type Props = {
   label?: string | number
   isActive?: boolean
   children?: React.ReactNode
+  className?: string
 }
 
 const cx = classNames.bind(styles)
 
 export const TableBodyCell = (props: Props) => {
-  const { label, isActive, children } = props
+  const { label, isActive, children, className } = props
 
-  const className = cx({
-    tableBodyCell: true,
-    active: isActive,
-  })
+  const classNames = cx(
+    {
+      tableBodyCell: true,
+      active: isActive,
+    },
+    className,
+  )
 
-  return <th className={className}>{label ? label : children}</th>
+  return <th className={classNames}>{label ? label : children}</th>
 }
